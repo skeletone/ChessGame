@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ChessGame</display-name>
+  <servlet>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>
+        	Controller.Controller
+    </servlet-class>
+    <init-param>
+      <param-name>jdbcDriverName</param-name>
+      <param-value>   com.mysql.jdbc.Driver   </param-value>
+    </init-param>
+    <init-param>
+      <param-name>jdbcURL</param-name>
+      <param-value>   jdbc:mysql:///chessgame      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>csvDir</param-name>
+      <param-value>                           </param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>   *.do                     </url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>messageservlet</servlet-name>
+    <servlet-class>websocketcontroller.MessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>messageservlet</servlet-name>
+    <url-pattern>/message.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>initServlet</servlet-name>
+    <servlet-class>websocketcontroller.InitServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+    <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>usersocketcontroller.UserServlet</servlet-class>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserList.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InitServlet</servlet-name>
+    <servlet-class>usersocketcontroller.InitServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <welcome-file-list>
+    <welcome-file> register.do </welcome-file>
+  </welcome-file-list>
+</web-app>
